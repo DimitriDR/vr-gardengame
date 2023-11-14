@@ -1,4 +1,4 @@
-- name: Tailscale
+name: Ubuntu
   run: Connecting to Tailscale network
   uses: tailscale/github-action@v2
   with:
@@ -6,8 +6,6 @@
       oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
       tags: tag:ci
       version: 1.52.0
-
-- name: Ubuntu
   run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
   on: [push]
   jobs:
