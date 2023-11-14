@@ -15,3 +15,4 @@ jobs:
         oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
         tags: tag:ci
         version: 1.52.0
+
