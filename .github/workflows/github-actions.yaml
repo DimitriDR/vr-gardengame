@@ -21,6 +21,9 @@ jobs:
       run: |
         sudo sed -i '1s/^/nameserver 100.81.143.116\n/' /etc/resolv.conf
     - uses: sonarsource/sonarqube-scan-action@master
+      with:
+        args: >
+          -X
       env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
