@@ -1,5 +1,4 @@
 name: Tailscale
-  run: Connecting to Tailscale network
   uses: tailscale/github-action@v2
   with:
       oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
