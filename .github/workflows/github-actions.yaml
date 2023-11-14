@@ -1,14 +1,14 @@
 name: CI
 
-on: [push, workflow_dispatch]
+on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    steps:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
-    steps:
     - name: Tailscale
       uses: tailscale/github-action@v2
       with:
