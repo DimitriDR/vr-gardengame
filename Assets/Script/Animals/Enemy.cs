@@ -26,7 +26,8 @@ public class Enemy : MonoBehaviour
 
     //Attack
     [SerializeField] private float idleTime;
-    private float idleCounter;
+    [SerializeField] private float attackTime;
+    private float attackCounterTime;
     private bool isAttacking;
 
     private void Awake()
@@ -44,6 +45,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        attackCounterTime -= Time.deltaTime;
         AnimationController();
         Debug.Log(agent.velocity.magnitude);
         CollisionCheck();
@@ -98,7 +100,15 @@ public class Enemy : MonoBehaviour
 
     private void AttackGarden()
     {
-        isAttacking = true;
+        if( attackCounterTime < 0 )
+        {
+            isAttacking = true;
+            attackCounterTime = attackTime;
+        }
+        else
+        {
+            isAttacking = false;
+        }
         agent.SetDestination(transform.position);
         transform.LookAt(garden.position);
     }
