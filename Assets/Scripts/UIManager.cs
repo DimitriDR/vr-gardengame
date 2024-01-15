@@ -1,21 +1,34 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject pauseMenu; 
-
+    public GameObject pauseMenu;
+    public GameObject button;
+    private InputDevice _inputDevice;
+    
     void Start()
     {
         pauseMenu.SetActive(false);
+        InputDeviceCharacteristics controllerCharacteristics =
+            InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Controller;
+        _inputDevice =
+            InputDevices.GetDeviceAtXRNode(XRNode
+                .LeftHand); // or XRNode.LeftHand, depending on which hand you want to use
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        // InputFeatureUsage<bool> primary = CommonUsages.triggerButton;
+        bool primary2DAxisClick = false;
+        
+        if (Input.GetKeyDown(KeyCode.JoystickButton8))
         {
-            pauseMenu.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 2f;
-            pauseMenu.transform.rotation = Camera.main.transform.rotation;
+            var cameraMain = Camera.main.transform;
+            pauseMenu.transform.position = cameraMain.position + cameraMain.forward * 4f;
+            pauseMenu.transform.rotation = cameraMain.rotation;
             pauseMenu.SetActive(!pauseMenu.activeSelf);
         }
 
@@ -23,19 +36,38 @@ public class UIManager : MonoBehaviour
         {
             // On bloque le joueur en mettant le temps à 0 :)
             Time.timeScale = 0;
-        } else {
+        }
+        else
+        {
             // Ici, on remettra le temps à 1
             Time.timeScale = 1;
         }
     }
-    
+
     public void ExitGame()
     {
         Application.Quit(0);
     }
-
+    
     public void Continue()
     {
-        pauseMenu.SetActive(false);
+        pauseMenu.SetActive(!pauseMenu.activeSelf);
+        
+        button.GetComponent<Image>().color = new Color32(89, 89, 89, 255);
+        button.GetComponentInChildren<Text>().color = new Color32(255, 255, 255, 255);
+        
+        Time.timeScale = 1;
+    }
+
+    public void buttonOnHover()
+    {
+        button.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+        button.GetComponentInChildren<Text>().color = new Color32(89, 89, 89, 255);
+    }
+
+    public void buttonNotOnHover()
+    {
+        button.GetComponent<Image>().color = new Color32(89, 89, 89, 255);
+        button.GetComponentInChildren<Text>().color = new Color32(255, 255, 255, 255);
     }
 }
