@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR;
-using UnityEngine.XR.Interaction.Toolkit;
 
 public class UIManager : MonoBehaviour
 {
     public GameObject pauseMenu;
     public GameObject button;
+    public AudioSource audioSource;
+    public AudioClip hoverButtonSound;
     private InputDevice _inputDevice;
     
     void Start()
@@ -69,5 +70,12 @@ public class UIManager : MonoBehaviour
     {
         button.GetComponent<Image>().color = new Color32(89, 89, 89, 255);
         button.GetComponentInChildren<Text>().color = new Color32(255, 255, 255, 255);
+    }
+
+    public void PlayHoverButtonSound()
+    {
+        audioSource.clip = hoverButtonSound;
+        audioSource.volume = 0.25f;
+        audioSource.Play();
     }
 }
