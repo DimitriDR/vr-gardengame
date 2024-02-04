@@ -27,6 +27,8 @@ public class Enemy : MonoBehaviour
     //Attack
     [SerializeField] private float idleTime;
     [SerializeField] private float attackTime;
+    [SerializeField] private int attackValue;
+    [SerializeField] private Garden gardenChamp;
     private float attackCounterTime;
     private bool isAttacking;
 
@@ -47,9 +49,9 @@ public class Enemy : MonoBehaviour
     {
         attackCounterTime -= Time.deltaTime;
         AnimationController();
-        Debug.Log(agent.velocity.magnitude);
+
         CollisionCheck();
-        Debug.Log(gardenInSightAttack);
+   
         if(!gardenInSightAttack && !gardenInAttackRange) Patroling();
 
         if(gardenInSightAttack && !gardenInAttackRange) WalkToGarden();
@@ -76,7 +78,7 @@ public class Enemy : MonoBehaviour
             walkPointSet = false;
         }
     }
-
+        
     private void SearchWalkPoint()
     {
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
@@ -104,9 +106,11 @@ public class Enemy : MonoBehaviour
         {
             isAttacking = true;
             attackCounterTime = attackTime;
+            gardenChamp.GetHit(attackValue);
         }
         else
         {
+       
             isAttacking = false;
         }
         agent.SetDestination(transform.position);
@@ -132,10 +136,5 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, sightRangeRadius);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRangeRadius);
-    }
-
-    public void hit()
-    {
-
     }
 }

@@ -21,8 +21,10 @@ public class HiterPart : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<Garden>() != null)
-        {
+        {   
+            Debug.Log("here " + attackValue);
             other.GetComponent<Garden>().GetHit(attackValue);
         }
     }
+
 }

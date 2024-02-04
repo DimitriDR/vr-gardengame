@@ -8,6 +8,7 @@ public class Garden : MonoBehaviour
     [SerializeField] int life;
     [SerializeField] int maxLife = 100;
     [SerializeField] Slider lifeBar;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,4 +44,5 @@ public class Garden : MonoBehaviour
     {
         lifeBar.value = life;
     }
+
 }

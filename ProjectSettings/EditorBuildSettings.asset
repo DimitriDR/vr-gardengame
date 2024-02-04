@@ -4,7 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/EnemiesSimulation.unity
+    guid: aaf52ed3981bfaf44ad0e20773a84584
   m_configObjects:
-    Unity.XR.PXR.Settings: {fileID: 11400000, guid: f8201440942fb3b4987c51ae28e10c5b, type: 2}
-    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 3a09a5f0550dca446a63b5df363d8cec, type: 2}
+    Unity.XR.PXR.Settings: {fileID: 11400000, guid: 7c6dd3ee4cc2c8b439d171c8d0983c9f, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: b78873ef9d44a55449c310f539e00af8, type: 2}
