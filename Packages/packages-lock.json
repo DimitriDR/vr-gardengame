@@ -128,7 +128,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.picoxr": {
-      "version": "file:D:/unitygames/TP3",
+      "version": "file:/Users/dimitri.de-roeck/Developer/realite-virtuelle/PicoXRSDK",
       "depth": 0,
       "source": "local",
       "dependencies": {
