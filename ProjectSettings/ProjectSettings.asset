@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: GardenGamevTB
+  productName: GardenGameTB
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -136,6 +136,7 @@ PlayerSettings:
     Others: 1
   bundleVersion: 0.1
   preloadedAssets:
+  - {fileID: 0}
   - {fileID: 11400000, guid: 7c6dd3ee4cc2c8b439d171c8d0983c9f, type: 2}
   - {fileID: 2740184212130134848, guid: b78873ef9d44a55449c310f539e00af8, type: 2}
   metroInputSource: 0
@@ -156,7 +157,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.DefaultCompany.GardenGamevTB
+    Android: com.DefaultCompany.GardenGameTB
     Standalone: com.DefaultCompany.GardenGame
   buildNumber:
     Standalone: 0
