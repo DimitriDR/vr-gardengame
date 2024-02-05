@@ -6,6 +6,8 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    public long health = 10;
+    
     private NavMeshAgent agent;
     private Rigidbody rb;
     private Animator anim;
@@ -136,5 +138,14 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, sightRangeRadius);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRangeRadius);
+    }
+    
+    public void TakeDamage(long damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Destroy(gameObject);// fuir dans les fait
+        }
     }
 }
