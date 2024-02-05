@@ -74,8 +74,9 @@ public class UIManager : MonoBehaviour
 
     public void PlayHoverButtonSound()
     {
-        audioSource.clip = hoverButtonSound;
-        audioSource.volume = 0.25f;
-        audioSource.Play();
+        //audioSource.clip = hoverButtonSound;
+        //audioSource.volume = 0.25f;
+       // audioSource.Play();
+        AudioManager.instance.PlaySFX(0);
     }
 }
