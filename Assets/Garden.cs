@@ -14,7 +14,11 @@ public class Garden : MonoBehaviour
     {
         life = maxLife;
         lifeBar.value = life;
-
+    }
+    
+    public int GetLife()
+    {
+        return life;
     }
 
     // Update is called once per frame
@@ -32,7 +36,7 @@ public class Garden : MonoBehaviour
         }
     }
 
-    public void GetRestoration(int restoration)
+    public void healGarden(int restoration)
     {
         if (life != maxLife)
         {
