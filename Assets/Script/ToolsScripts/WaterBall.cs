@@ -5,8 +5,8 @@ using UnityEngine;
 public class WaterBall : MonoBehaviour
 {
     // Start is called before the first frame update
-    public AudioClip clip;// fichier origine
-    public AudioSource source;//là où on va être jouer le son
+    public AudioClip clip;
+    public AudioSource source;
     public Console console;
     
     void Start()
@@ -16,11 +16,11 @@ public class WaterBall : MonoBehaviour
     
     void OnTriggerEnter(Collider collider)
     {
-        var cube = collider.gameObject.GetComponent<Enemy>();
-        if (cube != null)
+        var obj = collider.gameObject.GetComponent<Enemy>();
+        if (obj != null)
         {
-            cube.TakeDamage(1);
-            console.AddLine("Cube took damages: " + cube.health);
+            obj.TakeDamage(1);
+            console.AddLine(collider.name + " took damages: " + obj.health);
             AudioSource.PlayClipAtPoint(clip, transform.position);
             Destroy(this, 1);
             

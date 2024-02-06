@@ -5,10 +5,6 @@ using UnityEngine;
 
 public class Hoe : Tools
 {
-    // [SerializeField] private GameObject childCylindre;
-    // [SerializeField] private GameObject childCube;
-    // Start is called before the first frame update    // [SerializeField] private GameObject childCylindre;
-    // [SerializeField] private GameObject childCube;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,9 +19,18 @@ public class Hoe : Tools
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider collider)
     {
-        console.AddLine("Trigger Enter" + other.gameObject.name);
+        var obj = collider.gameObject.GetComponent<Enemy>();
+        if (obj != null)
+        {
+            obj.TakeDamage(1);
+            console.AddLine(collider.name + " took damages: " + obj.health);
+            if (audioHitSound != null)
+                AudioSource.PlayClipAtPoint(audioHitSound, transform.position);
+            Destroy(this, 1);
+            
+        }
     }
 
     void OnCollisionEnter(Collision other)
