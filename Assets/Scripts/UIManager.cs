@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     public GameObject button;
     public AudioSource audioSource;
     public AudioClip hoverButtonSound;
+    [SerializeField] private GameObject m_console;
     private InputDevice _inputDevice;
     
     void Start()
@@ -25,14 +26,6 @@ public class UIManager : MonoBehaviour
         // InputFeatureUsage<bool> primary = CommonUsages.triggerButton;
         bool primary2DAxisClick = false;
         
-        if (Input.GetKeyDown(KeyCode.JoystickButton8))
-        {
-            var cameraMain = Camera.main.transform;
-            pauseMenu.transform.position = cameraMain.position + cameraMain.forward * 4f;
-            pauseMenu.transform.rotation = cameraMain.rotation;
-            pauseMenu.SetActive(!pauseMenu.activeSelf);
-        }
-
         if (pauseMenu.activeSelf)
         {
             // On bloque le joueur en mettant le temps à 0 :)
@@ -43,6 +36,14 @@ public class UIManager : MonoBehaviour
             // Ici, on remettra le temps à 1
             Time.timeScale = 1;
         }
+    }
+
+    public void PauseGame()
+    {
+        var cameraMain = Camera.main.transform;
+        pauseMenu.transform.position = cameraMain.position + cameraMain.forward * 4f;
+        pauseMenu.transform.rotation = cameraMain.rotation;
+        pauseMenu.SetActive(!pauseMenu.activeSelf);
     }
 
     public void ExitGame()
@@ -78,5 +79,11 @@ public class UIManager : MonoBehaviour
         //audioSource.volume = 0.25f;
        // audioSource.Play();
         AudioManager.instance.PlaySFX(0);
+    }
+
+    public void ShowConsole()
+    {
+        pauseMenu.SetActive(!pauseMenu.activeSelf);
+        m_console.SetActive(!m_console.activeSelf);
     }
 }
