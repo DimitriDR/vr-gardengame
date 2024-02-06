@@ -30,13 +30,17 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float idleTime;
     [SerializeField] private float attackTime;
     [SerializeField] private int attackValue;
-    [SerializeField] private Garden gardenChamp;
+    [SerializeField] private GameObject gardenChamp;
     private float attackCounterTime;
     private bool isAttacking;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        if (gardenChamp == null)
+        {
+            gardenChamp = GameObject.FindGameObjectWithTag("PreGarden");
+        }
     }
     // Start is called before the first frame update
     void Start()
@@ -44,12 +48,25 @@ public class Enemy : MonoBehaviour
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
+        if(gardenChamp == null)
+        {
+            gardenChamp = GameObject.FindGameObjectWithTag("PreGarden");
+        }
+        garden = gardenChamp.transform;
+    }
+    private void OnEnable()
+    {
+        if (gardenChamp == null)
+        {
+            gardenChamp = GameObject.FindGameObjectWithTag("PreGarden");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         attackCounterTime -= Time.deltaTime;
+        Debug.Log(gardenChamp.transform.position);
         AnimationController();
 
         CollisionCheck();
@@ -108,7 +125,7 @@ public class Enemy : MonoBehaviour
         {
             isAttacking = true;
             attackCounterTime = attackTime;
-            gardenChamp.GetHit(attackValue);
+            gardenChamp.GetComponent<Garden>().GetHit(attackValue);
         }
         else
         {
@@ -146,6 +163,7 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);// fuir dans les fait
+            WaveManager.instance.decrementCurrentEnemyNbr();
         }
     }
 }

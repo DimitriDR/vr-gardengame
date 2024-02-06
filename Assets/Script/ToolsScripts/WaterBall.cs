@@ -25,6 +25,15 @@ public class WaterBall : MonoBehaviour
             Destroy(this, 1);
             
         }
+        else
+        {
+            Invoke("DestroyBall", 5.0f);
+        }
+    }
+
+    private void DestroyBall()
+    {
+        Destroy(gameObject);
     }
 
     // Update is called once per frame

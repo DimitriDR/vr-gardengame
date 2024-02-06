@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class Garden : MonoBehaviour
 {
-    [SerializeField] int life;
-    [SerializeField] int maxLife = 100;
+    [SerializeField] private int life;
+    [SerializeField] private int maxLife = 100;
     [SerializeField] Slider lifeBar;
 
     // Start is called before the first frame update
@@ -43,6 +43,11 @@ public class Garden : MonoBehaviour
     private void UpdateLifeBar()
     {
         lifeBar.value = life;
+    }
+
+    public int GetLife()
+    {
+        return life;
     }
 
 }

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Console : MonoBehaviour
 {
+    public static Console Instance;
     public Text displayer;
     public List<string> lines;
     private Camera vrCamera;
