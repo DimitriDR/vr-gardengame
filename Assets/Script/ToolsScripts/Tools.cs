@@ -7,7 +7,8 @@ public class Tools : MonoBehaviour
     public long durability;
     public long damage;
     public long durabilityLoseByHit;
-    
+    public AudioClip audioHitSound;
+    public AudioSource audioSource;
     public Console console;
  
 
@@ -16,6 +17,8 @@ public class Tools : MonoBehaviour
     {
         
     }
+    
+    
 
     // Update is called once per frame
     void Update()
