@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class Garden : MonoBehaviour
 {
-    [SerializeField] private int life;
-    [SerializeField] private int maxLife = 100;
+    [SerializeField] private float life;
+    [SerializeField] private float maxLife = 100;
     [SerializeField] Slider lifeBar;
 
     // Start is called before the first frame update
@@ -45,28 +45,22 @@ public class Garden : MonoBehaviour
         lifeBar.value = life;
     }
 
-    public int GetLife()
+    public float GetLife()
     {
         return life;
     }
 
     private void OnParticleCollision(GameObject other)
     {
-        Debug.Log("heere");
-        if(life == maxLife) 
+        if(life >= maxLife) 
         {
             life = maxLife;
         }
         else
         {
-            life += 1;
+            life += 0.05f;
         }
-        Debug.Log(life);
+  
     }
 
-    private void OnParticleTrigger()
-    {
-        
-        
-    }
 }
