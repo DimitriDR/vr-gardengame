@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class RainController : MonoBehaviour
 {
+    public static RainController instance;
     public ParticleSystem rainParticleSystem;
     public AudioSource heavyRainAudio;
     public AudioSource gentleRainAudio;
@@ -77,7 +78,12 @@ public class RainController : MonoBehaviour
             audioSource.Play();
         }
     }
-    void StopAllAudio()
+
+    public void PlayRainHeavy()
+    {
+        heavyRainAudio.Play();
+    }
+    public void StopAllAudio()
     {
         if (heavyRainAudio != null && heavyRainAudio.isPlaying)
         {

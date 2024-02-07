@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.XR;
 
@@ -85,5 +86,11 @@ public class UIManager : MonoBehaviour
     {
         pauseMenu.SetActive(!pauseMenu.activeSelf);
         m_console.SetActive(!m_console.activeSelf);
+    }
+
+    public void RestartGame()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("EnemiesSimulation");
     }
 }

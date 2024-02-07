@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -32,7 +33,9 @@ public class GameManager : MonoBehaviour
     {
         if(waveManager.GetCurrentEnemiesNbr() == 0 && waveManager.GetCurrentWave() == waveManager.GetTotalNbrWave()) 
         {
-            Console.Instance.AddLine("GameOVer");
+            Time.timeScale = 0;
+            Menu.SetActive(true);
+            Console.Instance.AddLine("GameOver");
         }
     }
 }

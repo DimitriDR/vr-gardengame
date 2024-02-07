@@ -39,6 +39,11 @@ public class WaveManager : MonoBehaviour
                 canAppear = false;
             }
         }
+
+       if(canAppear == false && nbrCurrentEnemy == 0)
+        {
+            Invoke("NextWave", 10.0f);
+        }
     }
 
     public void WaveEnemies()
@@ -74,11 +79,14 @@ public class WaveManager : MonoBehaviour
 
     public void NextWave()
     {
-      if(CheckEmptyEnemies())
+        nbrEnemy += _nbrStepEnemyAfterWave;
+        nbrCurrentEnemy = nbrEnemy;
+        this.canAppear = true;
+        if (nbrCurrentWave < _nbrTotalWave) 
         {
-            nbrCurrentEnemy = nbrEnemy;
-            this.canAppear = true;
+            nbrCurrentWave++;
         }
+       
     }
 
     public void decrementCurrentEnemyNbr()
