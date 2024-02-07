@@ -50,4 +50,23 @@ public class Garden : MonoBehaviour
         return life;
     }
 
+    private void OnParticleCollision(GameObject other)
+    {
+        Debug.Log("heere");
+        if(life == maxLife) 
+        {
+            life = maxLife;
+        }
+        else
+        {
+            life += 1;
+        }
+        Debug.Log(life);
+    }
+
+    private void OnParticleTrigger()
+    {
+        
+        
+    }
 }

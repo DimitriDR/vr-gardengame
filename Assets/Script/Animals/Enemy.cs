@@ -66,7 +66,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         attackCounterTime -= Time.deltaTime;
-        Debug.Log(gardenChamp.transform.position);
+        
         AnimationController();
 
         CollisionCheck();
