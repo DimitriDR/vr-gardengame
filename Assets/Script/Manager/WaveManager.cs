@@ -37,12 +37,26 @@ public class WaveManager : MonoBehaviour
             if(nbrCurrentEnemy == nbrEnemy)
             {
                 canAppear = false;
+                nbrEnemy += _nbrStepEnemyAfterWave;
             }
         }
 
-       if(canAppear == false && nbrCurrentEnemy == 0)
+        if (canAppear == false && NoEnemie() == true)
         {
-            Invoke("NextWave", 10.0f);
+
+
+            if (nbrCurrentWave < _nbrTotalWave)
+            {
+                nbrCurrentEnemy = 3;
+                canAppear = true;
+                nbrCurrentWave++;
+            }
+            else
+            {
+                GameManager.instance.CheckGameOver();
+            }
+
+            // Invoke("NextWave", 5f);
         }
     }
 
@@ -87,6 +101,11 @@ public class WaveManager : MonoBehaviour
             nbrCurrentWave++;
         }
        
+    }
+
+    public bool NoEnemie()
+    {
+        return GameObject.FindGameObjectsWithTag("Enemy").Length == 0;
     }
 
     public void decrementCurrentEnemyNbr()

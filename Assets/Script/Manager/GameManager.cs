@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
     [SerializeField] private GameObject garden;
     [SerializeField] private GameObject Menu;
     private WaveManager waveManager = WaveManager.instance;
@@ -31,11 +32,10 @@ public class GameManager : MonoBehaviour
 
     public void CheckGameOver()
     {
-        if(waveManager.GetCurrentEnemiesNbr() == 0 && waveManager.GetCurrentWave() == waveManager.GetTotalNbrWave()) 
-        {
-            Time.timeScale = 0;
-            Menu.SetActive(true);
-            Console.Instance.AddLine("GameOver");
-        }
+        
+         Time.timeScale = 0;
+         Menu.SetActive(true);
+         Console.Instance.AddLine("GameOver");
+        
     }
 }
